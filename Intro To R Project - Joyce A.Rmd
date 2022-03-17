@@ -1,0 +1,55 @@
+---
+title: "Intro to R Project - Joyce A"
+output: html_notebook
+---
+
+```{r}
+#Step 1: create a list with the items and a list with prices
+
+items<-list('item 1', 'item 2', 'item 3', 'item 4', 'item 5', 'item 6', 'item 7')
+
+itemprices<-list(120,32,99,49,99,75,30)
+print(itemprices)
+
+#Step 2: Add 10% import tax to each item, get the total purchase price per item
+#Step 3: for items above 500, the order receives a $10 discount
+
+for (totalcost in itemprices) {
+  total_cost<- function(price,discount = 10,tax = 0.10) {
+  total_cost <- if (sum(price)> 500){
+                  sum(price) - discount + (sum(price)*tax)
+  } else {sum(price) * tax
+}
+  round(total_cost, digits = 2)
+  discount<-10
+  tax <- 0.10
+  }
+total_cost(itemprices)
+}
+print(total_cost)
+
+# Step 4: Return the cost of shipping for the items in order. This function should only display the shipping charge.
+
+total_shipping <- function(a, b, c, d, e, f, g) {
+  for (x in items){
+    if (x == items[1]){
+      a = 4
+    } else if (x == items[-1]){
+      x = 2
+      total_shipping <-(a + b + c + d + e + f + g)
+      return(total_shipping)
+      } 
+  }
+}
+total_shipping()
+
+#prints out how much one would spend for both purchase and shipping
+#of the given items
+a <- total_cost
+b <- total_shipping(100)
+
+final_bill <- a + b
+
+print(final_bill)
+
+```
